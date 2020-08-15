@@ -1,0 +1,164 @@
+section.img {
+    
+    
+    figure {
+        transition: all 350ms ease-in-out;
+        width: 100vw;
+        flex-shrink: 0;
+        img {
+            object-fit: cover;
+            height: 765px;
+            width: 100%;
+
+        }
+    }
+}
+section.container {
+    width: 60%;
+    margin: 0 auto;
+    @media (max-width: 900px) {
+        width: 80%;
+    }
+    section.countries {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        background: radial-gradient(circle, rgba(255, 255, 255, 1) 0%, rgba(235, 235, 235, 1) 100%);
+        margin-bottom: 2em;
+        border-bottom: 1px solid white;
+        @media (max-width: 1200px) {
+            flex-direction: column;
+            text-align: center;
+        }
+    
+        a { 
+            color: black;
+            background-color: none;
+            border: none;
+            padding: .5em;
+            margin: 0 .5em;
+            cursor: pointer;
+        }
+    
+        &:before,
+        &:after {
+            content: "";
+            position: absolute;
+            z-index: -1;
+            box-shadow: 0 4px 10px -2px rgba(0, 0, 0, 0.2);
+            top: 0;
+            bottom: 0;
+            left: 10px;
+            right: 10px;
+            border-radius: 100px / 10px;
+    
+        }
+    
+        &:after {
+            right: 10px;
+            left: auto;
+            transform: skew(8deg) rotate(3deg);
+        }
+
+    
+    }
+    
+    .content {
+        display: grid;
+        grid-template-columns: 70% 30%;
+        gap: 4rem;
+        @media (max-width: 1200px) {
+            grid-template-columns: 1fr;
+        }
+    
+        .left {
+            padding-top: 2rem;
+            span {
+                font-size: .8rem;
+            }
+            .cities {
+                border-top: 1px dashed #aaaaaa90;
+                padding-top: 2rem;
+                margin-top: 2rem;
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1em;
+                @media (max-width: 900px) {
+                    grid-template-columns: 1fr;
+                }
+                article {
+                    cursor: pointer;
+                    h3 {
+                        font-weight: 400;
+                    }
+                    figure {
+                        width: 100%;
+                        img {
+                            width: 100%;
+                            height: 200px;
+                            object-fit: cover;
+                            border-radius: 4px;
+                        }
+                    }
+                    p {
+                        font-weight: 300;
+                        height: 70px;
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                        white-space: normal;
+                        display: -webkit-box;
+                        -webkit-line-clamp: 3;
+                        -webkit-box-orient: vertical;
+                    }
+                }
+            }
+        }
+        .right {
+            padding-left: 2rem;
+            border-left: 1px solid #aaaaaa80;
+            @media(max-width:1200px){
+                padding-left: unset;
+                border-left: unset;
+                padding-top: 2rem;
+                border-top: 1px solid #aaaaaa80;
+                }
+            h3 {
+                font-weight: 400;
+                padding-bottom: .7rem;
+                white-space: nowrap;
+            }
+            figure {
+                width: 90%;
+                img {
+                    border-radius: 5px;
+                    width: 100%;
+                }
+            }
+            .cities {
+                display: flex;
+                flex-direction: column;
+                padding-top: 1rem;
+                gap: 1rem;
+            }
+        }
+    }
+}
+
+.active {
+    font-weight: 700;
+}
+.air {
+    height: 70px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: normal;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+}
+.padding {
+    padding: 1rem 0%;
+    font-weight: 400;
+
+}

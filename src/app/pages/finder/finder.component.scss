@@ -1,0 +1,144 @@
+.container {
+    width: 60%;
+    margin: 0 auto;
+    @media(max-width:900px){
+        width: 90%;
+    }
+    .content {
+        display: grid;
+        grid-template-columns: 80% 20%;
+        gap: 4rem;
+        padding-top: 2rem;
+        @media(max-width:1200px){
+            grid-template-columns: 1fr;
+        }
+        .left {
+            h2 {
+                border-bottom: 1px dashed #aaaaaa90;
+                padding-bottom: 1rem;
+                padding: 1rem 0 .5rem;
+            }
+            span {
+                font-size: .8rem;
+            }
+            .results {
+                padding-top: 2rem;
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                gap: 1rem;
+
+                @media(max-width:900px){
+                    grid-template-columns: 1fr 1fr;
+                    gap: 2rem;
+                }
+                @media(max-width:700px){
+                    grid-template-columns: 1fr;
+                }
+
+
+                .shown {
+                    display: block;
+                }
+
+                article {
+                    // cursor: pointer;
+                    display: none;
+                    figure {
+                        width: 100%;
+                        img {
+                            border-radius: 10px;
+                            border: 1px solid #aaaaaa90;
+                            width: 100%;
+                        }
+                    }
+                    h3 {
+                        padding: 0 .5rem;
+                        // text-overflow: ellipsis;
+                        // overflow: hidden;
+                        // width: 10rem;
+                        // white-space: nowrap;
+                    }
+                    p {
+                        padding: 0 .5rem;
+                        font-size: .9rem;
+                        text-overflow: ellipsis;
+                        overflow: hidden;
+                        width: 10rem;
+                        white-space: nowrap;
+                    }
+                }
+            }
+        }
+        .right {
+            padding-left: 2rem;
+            border-left: 1px solid #aaaaaa80;
+            @media(max-width:1200px){
+                border-left: unset;
+                padding-left: unset;
+                padding-top: 2rem;
+                border-top: 1px solid #aaaaaa80;
+            }
+            section.text {
+                border-right: 1px solid #aaaaaa90;
+                padding: 1rem;
+                h2 {
+                    font-size: 1.2rem;
+                    padding-bottom: .5rem;
+        
+                }
+                p {
+                    font-size: .8rem;
+                }
+            }
+            form {
+                display: flex;
+                flex-direction: column;
+                padding-top: .5rem;
+                
+                section {
+                    padding-bottom: 1rem;
+                    width: 100%;
+                    label {
+                        font-weight: 400;
+                        font-size: .9rem;
+                        padding-bottom: .5rem;
+                    }
+                    label, input {
+                        display: block;
+                    }
+                    input, select {
+                        min-width: 10.6875rem;
+                        border-radius: 4px;
+                        padding: 0.5rem 0.75rem;
+                        border: 1px solid #d6d4d4;
+                        outline: 0;
+                    @media(max-width:1200px){
+                        width: 100%;    
+                    }
+
+                    }
+                }
+                button {
+                    font-size: .8rem;
+                    width: 50%;
+                    border: none;
+                    border-radius: 4px;
+                    padding: .5rem .75rem;
+                    color: #fff;
+                    background: linear-gradient(0deg, red 0%, #ec0000 100%);
+                    width: 100%;
+                    margin-top: .5rem;
+                @media(max-width:1200px){
+                    margin-top: 1rem;
+                }
+
+                }
+            }
+            
+        }
+    }
+}
+
+.red {
+    color: #ff0000;
+}

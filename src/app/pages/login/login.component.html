@@ -1,0 +1,29 @@
+
+<!-- <span *ngFor="params.length % 2">></span> -->
+<section class="container">
+
+    <section>
+    
+        <span><a routerLink="forside">Hotel Overlook</a> > Login</span>
+        <h1>Login</h1>
+        <h3>Her kan du logge ind og adminstrerer dine reservationer.</h3>
+        <form [formGroup]="login" (ngSubmit)="submit()" method="POST">
+            <label for="username">Brugernavn: <span *ngIf="f.username.invalid" class="red">*</span><span *ngIf="f.username.valid && !f.username.invalid"><i class="fas fa-check"></i></span></label>
+            <input type="text" formControlName="username" id="username" placeholder="Indtast dit brugernavn">
+            <div *ngIf="f.username.invalid && f.username.touched" class="error"><p>Brugernavnet er ikke gyldigt</p></div>
+            <label for="password">Adgangskode: <span *ngIf="f.password.invalid" class="red">*</span><span *ngIf="f.password.valid && !f.password.invalid"><i class="fas fa-check"></i></span></label>
+            <input type="password" formControlName="password" id="password" placeholder="Indtast din adgangskode">
+            <div *ngIf="f.password.invalid && f.password.touched" class="error"><p>Adgangskoden er ikke gyldig</p></div>
+            
+            <button [disabled]="!login.valid" type="submit">LOGIN</button>
+            <span class="error" *ngIf="error">{{error}}</span>
+       
+        </form>
+    
+    </section>
+    <section class="problems">
+        <h2>Problemer med login?</h2>
+        <a href="#">Glemt adgangskode?</a>
+        <a href="#">Opret bruger</a>
+    </section>
+</section>

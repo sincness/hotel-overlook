@@ -1,0 +1,53 @@
+<section class="img">
+    <figure>
+        <img id="image" *ngIf="countries" src="{{countries[getIdx()].image}}" alt="Billede">
+    </figure>
+</section>
+
+<section class="container">
+
+    <section class="countries">
+        <a *ngFor="let country of countries" [class.active]="this.sortBy === lowerCase(country.name)" (click)="filterBy(country.name, country.id); reload()">{{country.name}}</a>
+    </section>
+    
+    <section class="content">
+    
+        <section class="left">
+            <span *ngIf="rooms" class="padding"><a routerLink="/forside">Hotel Overlook</a> > <a routerLink="/hoteller">Hoteller og Destinationer</a> > <a routerLink="/hoteller/{{country}}"> {{ upperCase(country) }} </a> > <a routerLink="/hoteller/{{country}}/{{city}}">{{ upperCase(city) }}</a>  > {{ rooms[0].hotel_name }}</span>
+            <h2 *ngIf="rooms" class="padding">{{ rooms[0].hotel_name }}</h2>
+            <!-- <p> {{hotel.teaser}} </p> -->
+
+            <!-- <p class="air" *ngFor="let country of countries | slice:0:1;">{{country.description}}</p> -->
+            <h3 class="underline">Vores værelser</h3>
+            <section class="cities">
+                
+                <article *ngFor="let room of rooms" routerLink="{{room.id}}">
+                    <figure>
+                        <img [src]="room.images[0].image" alt="{{room.room_title}}">
+                    </figure>
+                  <h4>{{ room.room_title }}</h4>
+                  <h5>{{ room.area }} Plads til {{ room.num_persons }} <span>{{(room.num_persons >= 2) ? 'personer' : 'person'}}</span></h5>
+                  <p>{{ room.description }}</p>
+                  <h4>Fra {{ room.day_price_normal }} DKK</h4>
+                </article>
+            </section>
+    
+        </section>
+        <section class="right">
+            <ul>
+                <li><h3>Hotel Information</h3></li>
+                <li *ngIf="hotel"><p><span class="red"><i class="fas fa-map-marker-alt fa-lg"></i></span> {{ hotel.address }}</p></li>
+                <li *ngIf="hotel"><p><span class="green"><i class="fas fa-phone-square-alt fa-lg"></i></span> {{ hotel.phone }}</p></li>
+                <li><h3>Faciliteter</h3></li>
+                <li *ngFor="let item of facilities"><p>{{ item.title }}</p></li>
+                <li *ngIf="like"><input checked (click)="deleteRating()" id="toggle-heart" type="checkbox"/>
+                    <label for="toggle-heart">❤</label></li>
+                <li *ngIf="!like"><input (click)="postRating()" id="toggle-heart" type="checkbox"/>
+                    <label for="toggle-heart">❤</label></li>
+            </ul>
+            
+            
+        </section>
+    
+    </section>
+</section>

@@ -1,0 +1,39 @@
+<section class="container">
+    <section class="content">
+        <section class="left" >
+            <span class="underline"><a routerLink="/forside">Hotel Overlook</a> > Nyheder </span>
+            <section class="news">
+                
+                <article *ngFor="let item of data" (click)="read(item.id)">
+                    <figure>
+                        <img src="{{item.image}}" alt="Billede">
+                    </figure>
+                    <h2>{{item.title}}</h2>
+                    <span >{{item.local_time}}</span>
+                    <p>{{item.content}}</p>
+                </article>
+            </section>
+            
+            
+        </section>
+        <section class="right">
+            <ul *ngIf="!user" class="cases">
+                <li><h3>Samlingen af vores nyheder</h3></li>
+                <li><i class="fas fa-check"></i><p>Bo 2, betal for 1</p></li>
+                <li><i class="fas fa-check"></i><p>Værelsesopgradering.</p></li>
+                <li><i class="fas fa-check"></i><p>Ekslusive partnertilbud.</p></li>
+                <li><i class="fas fa-check"></i><p>48-timers værelsesgaranti.</p></li>
+                <li><i class="fas fa-check"></i><p>Livstidsmedlem.</p></li>
+                <li><i class="fas fa-check"></i><p>Vip-Telefonsupport.</p></li>
+            </ul>
+            <ul *ngIf="user">
+                <li><h3>Dine oplysninger</h3></li>
+                <li><span>Du er logget ind som <b>{{user.username}}</b></span></li>
+                <li><a routerLink="/min-side">Adminstrer reservationer</a></li>
+                <li><a routerLink="/om-overlook">Om Overlook</a></li>
+                <li><a routerLink="/nyheder">Nyheder</a></li>
+                <li><a (click)="logout()">Log ud</a></li>
+            </ul>
+        </section>
+    </section>
+</section>

@@ -1,0 +1,132 @@
+<section class="container">
+
+    <section class="content">
+    
+        <section class="left">
+            <span class="padding"><a routerLink="/forside">Hotel Overlook</a> > <a href="#">Reservation</a> > Reserver dit foretrukne værelse </span>
+            <h2>Reserver dit foretrukne værelse</h2>
+            <p class="bordered">Her kan du vælge destination, hotel og værelsestype og gennemføre din Overlook booking.</p>
+            <!-- <p class="air" *ngFor="let country of countries | slice:0:1;">{{country.description}}</p> -->
+
+            <form [formGroup]="order" method="POST">
+                <section class="input">
+                    <label for="destination">Destination/Hotel: <span *ngIf="f.hotel.invalid" class="red">*</span></label>
+                    <select formControlName="hotel" name="destination" for>
+                        <option value="1">Göteborg, Overlook Europa</option>
+                        <option value="3">Göteborg, Overlook Crown</option>
+                        <option value="4">Stockholm, Overlook Grand Central</option>
+                        <option value="5">Stockholm, Overlook Haymarket</option>
+                        <option value="6">Jönköping, Overlook Portalen</option>
+                        <option value="7">Helsinki, Overlook Grand Marina</option>
+                        <option value="8">Helsinki, Overlook Seurahuone</option>
+                        <option value="9">Rauma, Overlook</option>
+                        <option value="10">København, Overlook Webers</option>
+                        <option value="11">København, Overlook Copenhagen</option>
+                        <option value="12">Aalborg, Overlook City</option>
+                        <option value="13">Aalborg Øst, Overlook</option>
+                        <option value="14">Silkeborg, Overlook</option>
+                        <option value="15">Aarhus, Overlook The Mayor</option>
+                        <option value="16">Aarhus, Overlook City</option>
+                        <option value="17">Lillehammer, Overlook Hafjell</option>
+                        <option value="18">Lillehammer, Overlook Victoria</option>
+                        <option value="19">Oslo, Overlook Grand Hotel</option>
+                        <option value="20">Oslo, Overlook Holmenkollen Park</option>
+                        <option value="21">Tromsø, Overlook Ishavshotel</option>
+                        <option value="22">Tromsø, Overlook Grand</option>
+                        <option value="23">Berlin, Overlook Postdamer Platz</option>
+                        <option value="24">Berlin, Overlook Kurfurstendamm</option>
+                        <option value="25">Hamburg, Overlook Emporio</option>
+                        <option value="26">Frankfurt, Overlook Museumsufer</option>
+                        <option value="27">Gdansk, Overlook</option>
+                        <option value="28">Wroclaw, Overlook</option>
+                        <option value="30">Keflavik, Overlook Grand Hotel</option>
+                        <option value="31">Keflavik, Overlook Blue Lagoon</option>
+                    </select>
+                </section>
+                <section class="type">
+                    <section class="input-container">
+                        <label for="room">Værelsestype: <span *ngIf="f.room.invalid" class="red">*</span></label>
+                        <select formControlName="room" name="room">
+                            <option value="1">Economy</option>
+                            <option value="2">Superior</option>
+                            <option value="3">Superior Plus</option>
+                            <option value="4">Junior Suite</option>
+                            <option value="5">Presidential Suite</option>
+                            <option value="6">Standard Single</option>
+                            <option value="7">Standard</option>
+                        </select>
+                    </section>
+                    <section class="input-container">
+                        <label for="persons">Antal personer: <span *ngIf="f.num_persons.invalid" class="red">*</span></label>
+                        <select formControlName="num_persons" name="persons">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                        </select>
+                    </section>
+                </section>
+                <section class="half">
+                    <section class="input-container">
+                        <label for="trip-start">Check-in dato: </label>
+                        <input type="date" id="start" name="trip-start" value="2020-08-12" min="2020-01-01" max="2021-12-31">
+                    </section>
+                    <section class="input-container">
+                        <label for="trip-end">Check-ud dato: </label>
+                        <input type="date" id="end" name="trip-end" value="2020-08-12" min="2020-01-01" max="2021-12-31">
+                    </section>
+                </section>
+                <label class="price">Pris klasse: </label>
+                <section class="input-radio">
+                    <input formControlName="is_flex" type="radio" id="normal" name="is_flex" value="false" checked>
+                    <label class="radio space" for="normal">Normal Pris</label>
+
+                    <input formControlName="is_flex" type="radio" id="flex" name="is_flex" value="true">
+                    <label class="radio" for="flex">Flex Pris</label>
+                </section>
+                <section class="half">
+                    <section class="input-container">
+                        <label for="firstname">Fornavn: <span *ngIf="f.firstname.invalid" class="red">*</span></label>
+                        <input formControlName="firstname" type="text" name="firstname" placeholder="Indtast dit fornavn">
+                    </section>
+                    <section class="input-container">
+                        <label for="lastname">Efternavn: <span *ngIf="f.lastname.invalid" class="red">*</span></label>
+                        <input formControlName="lastname" type="text" name="lastname" placeholder="Indtast dit efternavn">
+                    </section>
+                </section>
+                <section class="input">
+                    <label for="phone">Telefon: <span *ngIf="f.phone.invalid" class="red">*</span></label>
+                    <input formControlName="phone" type="text" name="phone" placeholder="Indtast dit telefonummer">
+                </section>
+                <section class="input">
+                    <label for="comments">Eventuelle anmodninger eller kommentarer:</label>
+                    <textarea type="text" name="comments"></textarea>
+                </section>
+                <section class="input-radio">
+                    <input formControlName="check" class="checkbox" type="checkbox" name="accept" value="Accept">
+                    <label class="checklabel" for="accept"> Jeg accepterer hermed Overlooks betingelser. <span *ngIf="f.check.invalid" class="red">*</span></label>
+                </section>
+                <button type="button" (click)="buy()">Send reservation</button>
+                <!-- <button [disabled]="!order.valid" type="button" (click)="buy()">Send reservation</button> -->
+                
+            </form>
+    
+        </section>
+        <section class="right">
+            <ul class="rules">
+                <li><h3>Betingelser</h3></li>
+                <li><i class="fas fa-check"></i><p>Reduceret pris - spar op til 25%.</p></li>
+                <li><i class="fas fa-check"></i><p>Kan kun bookes online vha. Overlook website og app.</p></li>
+                <li><i class="fas fa-check"></i><p>Bestil helt op til og med ankomstdagen.</p></li>
+                <li><i class="fas fa-check"></i><p>Bookinger tilbagebetales ikke og kan ikke ændres eller annulleres.</p></li>
+                <li><i class="fas fa-check"></i><p>Beløbet debiteres kreditkort på reservationstidspunket.</p></li>
+                <li><i class="fas fa-check"></i><p>Morgenmad er inkluderet.</p></li>
+            </ul>
+        </section>
+    
+    </section>
+</section>

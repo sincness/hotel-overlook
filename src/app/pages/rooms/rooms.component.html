@@ -1,0 +1,43 @@
+<section class="container">
+    <section class="content">
+        <section class="left">
+            <span class="padding"><a routerLink="/forside">Hotel Overlook</a> > Se vores udvalg af værelser </span>
+            <h2 class="padding">Se vores udvalg af værelser</h2>
+            <p>Hos Overlook handler den gode hoteloplevelse helt enkelt om at give dig en bedre service, en bedre søvn og en bedre start på dagen, så du tager videre med en god fornemmelse og får lyst til at komme tilbage.</p>
+            
+            <p>Når du træder indenfor på Overlooks hoteller, oplever du det med det samme. Det er her, store øjeblikke deles med venner og familie, og nye relationer opstår. Hvor fremtiden formes, vigtige møder finder sted, og en god middag måske fører til kærlighed. Her sker altid noget.</p>
+
+            <p>Med 31 hoteller på 29 destinationer i syv lande har alle vores hoteller deres egen unikke personlighed og atmosfære. Men nogle ting er en selvfølge, når du vælger at bo hos os.</p>
+
+            <p>Du vil opleve værelser af god komfort og høj kvalitet når du bor på et af vores hoteller. Vi har nemlig hentet hjælp fra de bedste eksperter på området.  Overlook har et tæt samarbejde med den legendariske hotelkonge, Bjarne Rother, som anses for at være en af verdens mest erfarne indenfor værelsesudlejning omkring Østersøen. Og han har flere gange givet Overlook’s hoteller mere end fem stjerner.</p>
+
+            <p>Du kan se de forskellige værelsestyper ved at klikke dig rundt i menuen til højre.</p>
+            <section class="images">
+
+                <figure>
+                    <img src="../../../assets/img/room1.jpg" alt="Værelse">
+                </figure>
+                <figure>
+                    <img src="../../../assets/img/room2.jpg" alt="Værelse">
+                </figure>
+                <figure>
+                    <img src="../../../assets/img/room3.jpg" alt="Værelse">
+                </figure>
+                <figure>
+                    <img src="../../../assets/img/room4.jpg" alt="Værelse">
+                </figure>
+            </section>
+        </section>
+        <section class="right">
+            <section class="types">
+                <h3>Værelsestyper</h3>
+                <article *ngFor="let type of rooms">
+                    <figure>
+                        <img routerLink="{{type.id}}" src="{{ type.images[0].image}}" alt="{{type.title}}">
+                    </figure>
+                    <a routerLink="{{ type.id }}">{{ type.title }}</a>
+                </article>
+            </section>
+        </section>
+    </section>
+</section>

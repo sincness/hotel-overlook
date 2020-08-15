@@ -1,0 +1,46 @@
+<nav id="main-nav">
+
+    <span (click)="menuOpen = !menuOpen; menu()" id="menu" class="material-icons">menu</span>
+
+
+    <figure routerLink="/forside">
+        <img src="../../../assets/svg/hotel-overlook-logo.svg" alt="Logo" />
+    </figure>
+
+
+    <ul>
+        <li><a routerLink="/forside">Forside</a></li>
+        <li>|</li>
+        <li><a routerLink="/hoteller/danmark">Hoteller og destinationer</a></li>
+        <li>|</li>
+        <li><a routerLink="/rooms">Værelser</a></li>
+        <li>|</li>
+        <li><a routerLink="/reservation">Reservation</a></li>
+        <li>|</li>
+        <li *ngIf="!online"><a routerLink="/login">Login</a></li>
+        <li *ngIf="online">
+            <a routerLink="/min-side">Min side</a>
+            <!-- <span class="material-icons">
+                keyboard_arrow_down
+            </span>
+            <ul>
+                <li><a routerLink="/mitprogram">Adminstrer reservationer</a></li>
+                <li><a routerLink="/">Rediger profil</a></li>
+                <li><a routerLink="/logud">Log ud</a></li>
+            </ul> -->
+        </li>
+    </ul>
+
+</nav>
+
+
+<nav id="side-nav">
+    <ul>
+        <li><a routerLink="/forside" (click)="anim()">Forside</a></li>
+        <li><a routerLink="/hoteller" (click)="anim()">Hoteller og destinationer</a></li>
+        <li><a routerLink="/rooms" (click)="anim()">Værelser</a></li>
+        <li><a routerLink="/reservation" (click)="anim()">Reservation</a></li>
+        <li *ngIf="!online"><a routerLink="/login" (click)="anim()">Log ind</a></li>
+        <li *ngIf="online"><a routerLink="/min-side" (click)="anim()">Min side</a></li>
+    </ul>
+</nav>

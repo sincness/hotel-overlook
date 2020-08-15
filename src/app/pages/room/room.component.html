@@ -1,0 +1,69 @@
+<section class="container">
+    
+    <section class="content">
+    
+        <section class="left">
+            <span *ngIf="room" class="padding"><a routerLink="/forside">Hotel Overlook</a> > <a routerLink="/rooms">Se vores udvalg af værelser</a> > {{ room.title }} </span>
+
+            <!-- <p class="air" *ngFor="let country of countries | slice:0:1;">{{country.description}}</p> -->
+            <h3 *ngIf="room" class="title">{{ room.title }}</h3>
+            <section class="cities">
+                
+                <article *ngIf="room">
+                    <figure>
+                        <img [src]="room.images[0].image" alt="{{room.title}}">
+                    </figure>
+                  <section class="hero">
+                      <section class="text">
+                          <h4>{{ room.area }}</h4>
+                          <h4>Plads til {{ room.num_persons }} <span>{{(room.num_persons >= 2) ? 'personer' : 'person'}}</span></h4>
+                      </section>
+                      <section class="images" *ngIf="room.num_images > 1">
+                          <figure *ngFor="let item of room.images">
+                              <img [src]="item.image" [alt]="item.title">
+                          </figure>
+                      </section>
+                  </section>
+                  
+
+                  <p>{{ room.description }}</p>
+                <section class="book">
+
+                    <section class="normal">
+                        <b>NORMAL Pris - inkl. morgenmad</b>
+                        <span class="note">Kan ikke ændres eller afbestilles</span>
+                        <section class="prices">
+                          <span class="price">{{ priceFix(room.day_price_normal) }}<p>DKK/nat</p></span>
+                          <button routerLink="/reservation" type="button">Book</button>
+                        </section>
+                    </section>
+                    <section class="flex">
+                        <b>FLEX Pris - inkl. morgenmad</b>
+                        <span class="note">Kan ændres eller afbestilles</span>
+                        <section class="prices">
+                          <span class="price">{{ priceFix(room.day_price_flex) }} <p>DKK/nat</p></span>
+                          <button routerLink="/reservation" type="button">Book</button>
+                        </section>
+                    </section>
+                </section>
+
+                </article>
+            </section>
+    
+        </section>
+        <section class="right">
+            <section class="types">
+                <h3>Værelsestyper</h3>
+                <article *ngFor="let type of rooms">
+                    <figure>
+                        <img (click)="reload()" routerLink="/rooms/{{ type.id }}" src="{{ type.images[0].image}}" alt="{{ type.title }}">
+                    </figure>
+                    <a (click)="reload()" routerLink="/rooms/{{ type.id }}">{{ type.title }}</a>
+                </article>
+            </section>
+            
+            
+        </section>
+    
+    </section>
+</section>

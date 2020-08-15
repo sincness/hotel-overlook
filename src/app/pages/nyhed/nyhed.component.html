@@ -1,0 +1,23 @@
+<section class="container">
+    <section class="content">
+        <section class="left" *ngIf="data">
+            <span class="underline"><a routerLink="/forside">Hotel Overlook</a> > <a routerLink="/nyheder">Nyheder</a> > {{ getMonth(data.local_time)}} </span>
+            <figure>
+                <img src="{{data.image}}" alt="Billede">
+            </figure>
+            <h2>{{data.title}}</h2>
+            <span class="underline">{{data.local_time}}</span>
+            <p>{{data.content}}</p>
+        </section>
+        <section class="right">
+            <h3>Andre nyheder</h3>
+            <article *ngFor="let item of news" [class.hidden]="item.id === data.id">
+                <figure>
+                    <img src="{{item.image}}" alt="Billede">
+                </figure>
+                <a (click)="reload()" routerLink="/nyheder/{{item.id}}">{{item.title}}</a>
+
+            </article>
+        </section>
+    </section>
+</section>

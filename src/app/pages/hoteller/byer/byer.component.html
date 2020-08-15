@@ -1,0 +1,40 @@
+<section class="img">
+    <figure>
+        <img id="image" *ngIf="countries" src="{{countries[getIdx()].image}}" alt="Billede">
+    </figure>
+</section>
+
+<section class="container">
+
+    <section *ngIf="countries" class="countries">
+        <a *ngFor="let country of countries" [class.active]="this.sortBy === lowerCase(country.name)" (click)="filterBy(country.name, country.id); reload();">{{country.name}}</a>
+    </section>
+    
+    <section class="content">
+    
+        <section class="left">
+            <span class="padding"><a routerLink="/forside">Hotel Overlook</a> > <a routerLink="/hoteller">Hoteller og Destinationer</a> > <a routerLink="/hoteller/{{country}}"> {{ upperCase(country) }} </a> > {{ upperCase(city) }} </span>
+            <h2 class="padding">Vores hoteller i {{ upperCase(city) }}</h2>
+            <p class="air" *ngFor="let country of countries | slice:0:1;">{{country.description}}</p>
+            <section class="cities">
+    
+                <article *ngFor="let hotel of hotels" routerLink="{{hotel.id}}">
+                    <figure>
+                        <img [src]="hotel.image" alt="{{hotel.title}}">
+                    </figure>
+                  <h3>{{ hotel.title }}</h3>
+                  <p>{{ hotel.teaser }}</p>
+                </article>
+            </section>
+    
+        </section>
+        <section class="right">
+            <h3>Se andre byer i {{ upperCase(sortBy) }}:</h3>
+            <section class="cities">
+                
+                <a *ngFor="let city of cities" (click)="reload()" routerLink="/hoteller/{{country}}/{{lowerCase(city.name)}}">{{ city.name }}</a>
+            </section>
+        </section>
+    
+    </section>
+</section>

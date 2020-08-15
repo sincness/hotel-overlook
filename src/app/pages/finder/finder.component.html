@@ -1,0 +1,61 @@
+<section class="container">
+    
+    <section class="content">
+        <section class="left">
+            <span class="padding"><a routerLink="/forside">Hotel Overlook</a> > <a routerLink="/find">Find dit værelse</a> > Søgeresultater </span>
+            <h2>Find dit værelse</h2>
+            <span> {{ hits }} søgeresultater på din søgning</span>
+            <section class="results">
+                <article *ngFor="let item of second" [class.shown]="item.num_persons >= persons" [attr.data-persons]="item.num_persons" routerLink="/hoteller/{{country}}/{{ getCity(item.hotel_id) }}/{{item.hotel_id}}/{{item.id}}">
+                    <figure>
+                        <img [src]="item.images[0].image" alt="{{item.hotel_name}}">
+                    </figure>
+                  <h3>{{ item.hotel_name }}</h3>
+                  <p>{{ item.description }}</p>
+                </article>
+            </section>
+    
+        </section>
+        <section class="right">
+            <h3>Søg</h3>
+            <form method="POST">
+                <section>
+                    <label for="destination">Destination:</label>
+                    <select name="destination" id="destination">
+                        <option selected hidden (value)="persons">{{ upperCase(country) }}</option>
+                        <option value="danmark">Danmark</option>
+                        <option value="sverige">Sverige</option>
+                        <option value="finland">Finland</option>
+                        <option value="norge">Norge</option>
+                        <option value="tyskland">Tyskland</option>
+                        <option value="polen">Polen</option>
+                        <option value="island">Island</option>
+                    </select>
+                </section>
+                <section>
+                    <label for="checkin">Check-in:</label>
+                    <input type="date" id="start" name="trip-start" value="2020-08-12" min="2020-01-01" max="2021-12-31">
+                </section>
+                <section>
+                    <label for="checkout">Check-ud:</label>
+                    <input type="date" id="end" name="trip-end" value="2020-08-12" min="2020-01-01" max="2021-12-31">
+                </section>
+                <section>
+                    <label for="persons">Antal personer:</label>
+                    <select name="persons" id="persons">
+                        <option selected hidden (value)="persons">{{ persons }}</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                    </select>
+                </section>
+                <button type="button" (click)="submit()">Søg</button>
+            </form>
+        </section>
+    
+    </section>
+</section>

@@ -1,0 +1,43 @@
+<section class="img">
+    <figure>
+        <img id="image" *ngIf="countries" src="{{countries[getIdx()].image}}" alt="Billede">
+    </figure>
+</section>
+
+<section class="container">
+
+    <section class="countries">
+        <a *ngFor="let country of countries" [class.active]="this.sortBy === lowerCase(country.name)" (click)="filterBy(country.name, country.id)" routerLink="/hoteller/{{lowerCase(country.name)}}">{{country.name}}</a>
+    </section>
+    
+    <section class="content">
+        <section class="left">
+            <span class="padding"><a routerLink="/forside">Hotel Overlook</a> > <a routerLink="/hoteller">Hoteller og Destinationer</a> > {{ upperCase(sortBy) }} </span>
+            <h2 class="padding">Vores lokationer i {{ upperCase(sortBy) }}</h2>
+            <p class="air" *ngFor="let country of countries | slice:0:1;">{{country.description}}</p>
+            <section class="cities">
+    
+                <article *ngFor="let city of cities" routerLink="{{lowerCase(city.name)}}/">
+                    <figure>
+                        <img [src]="city.image" alt="{{city.name}}">
+                    </figure>
+                  <h3>{{ city.name }}</h3>
+                  <p>{{ city.description }}</p>
+                </article>
+            </section>
+    
+        </section>
+        <section class="right">
+            <h3>Kort over {{ upperCase(sortBy) }}</h3>
+            <figure>
+                <img src="../../../assets/img/{{lowerCase(sortBy)}}.jpg" alt="Kort">
+            </figure>
+            <!-- <h3>Se andre byer i {{ upperCase(sortBy) }}:</h3>
+            <section class="cities">
+                
+                <a *ngFor="let city of cities" routerLink="#">{{ city.name }}</a>
+            </section> -->
+        </section>
+    
+    </section>
+</section>

@@ -1,0 +1,90 @@
+section.search {
+    top: 7rem;
+    left: 50%;
+    transform: translateX(-50%);
+    position: absolute;
+    z-index: 3;
+    width: 60%;
+    min-height: 30px;
+    background-color: #ebebeb;
+    box-shadow: 0 0 10px 3px rgba(0,0,0,.2);
+    border-radius: 4px;
+    display: grid;
+    grid-template-columns: 23% 77%;
+    @media (max-width: 1870px) {
+        width: 80%;
+    } 
+    @media (max-width: 1375px) {
+        grid-template-columns: 1fr;
+    }
+
+
+    section.text {
+        border-right: 1px solid #aaaaaa90;
+        padding: 1rem;
+        h2 {
+            font-size: 1.2rem;
+            padding-bottom: .5rem;
+
+        }
+        p {
+            font-size: .8rem;
+        }
+    }
+    form {
+        display: flex;
+        padding: 1rem;
+        align-items: center;
+        background-color: #fff;
+        @media (max-width: 1405px) {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+        }
+        @media (max-width: 1190px) {
+            grid-template-columns: repeat(3, 1fr);
+        }
+        @media (max-width: 1050px) {
+            grid-template-columns: repeat(2, 1fr);
+        }
+        section {
+            width: 100%;
+            label {
+                font-weight: 400;
+                font-size: .9rem;
+                padding-bottom: .5rem;
+            }
+            label, input {
+                display: block;
+            }
+            input, select {
+                border-radius: 4px;
+                padding: 0.5rem 0.75rem;
+                border: 1px solid #d6d4d4;
+                outline: 0;
+            }
+        }
+        button {
+            font-size: .8rem;
+            width: 50%;
+            align-self: flex-end;
+            // align-self: center;
+            border: none;
+            border-radius: 4px;
+            // padding: .3rem;
+            padding: .5rem .75rem;
+            color: #fff;
+            background: linear-gradient(0deg, red 0%, #ec0000 100%);
+            margin-left: 1rem;
+            margin-top: 1rem;
+            
+            @media (max-width: 1400px) { 
+            margin-left: 0;
+                margin-top: 1rem;
+                align-self: center;
+
+            }
+
+
+        }
+    }
+}

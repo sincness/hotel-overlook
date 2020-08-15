@@ -1,0 +1,23 @@
+<section class="content">
+
+    <h2>Se vores nyheder</h2>
+    <section class="news">
+        <article *ngFor="let nyhed of nyheder | slice:0:3;" routerLink="/nyheder/{{nyhed.id}}">
+            <figure>
+                <img [src]="nyhed.image" [alt]="nyhed.title">
+            </figure>
+          <h3>{{ nyhed.title }}</h3>
+          <p>{{ nyhed.teaser }}</p>
+        </article>
+    </section>
+    <h2>Se udvalgte værelser</h2>
+    <section>
+        <article *ngFor="let room of rooms | slice:0:3;" (click)="hop(room.id)">
+            <figure>
+                <img [src]="room.images[0].image" alt="{{room.title}}">
+            </figure>
+          <h3>{{ room.title }}</h3>
+          <p>{{ room.description }}</p>
+        </article>
+    </section>
+</section>

@@ -1,0 +1,24 @@
+<section class="container">
+
+    <section class="content">
+        <section class="left">
+            <span><a routerLink="/forside">Hotel Overlook</a> > Om Overlook</span>
+            <h2>Information om Overlook</h2>
+            <p class="underline">Hverdagen på hovedkontoret er både uforudsigelig, dynamisk og udfordrende.</p>
+            <section class="story">
+                <h3>Styrken ligger i forskelligheden</h3>
+                <p>Unikke hoteller med hver deres charme, stil og topplacering i København har været hotelkæden Overlook kendetegn i mere end 60 år. Strategien er klar: Det handler om at dyrke det enkelte hotels særlige kendetegn.</p>
+            </section>
+        </section>
+        <section class="right">
+            <ul>
+                <li><h3>Dine oplysninger</h3></li>
+                <li><span>Du er logget ind som <b>{{user.username}}</b></span></li>
+                <li><a routerLink="/min-side">Adminstrer reservationer</a></li>
+                <li><a routerLink="/om-overlook">Om Overlook</a></li>
+                <li><a routerLink="/nyheder">Nyheder</a></li>
+                <li><a (click)="logout()">Log ud</a></li>
+            </ul>
+        </section>
+    </section>
+</section>

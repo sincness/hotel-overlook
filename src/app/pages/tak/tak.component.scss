@@ -1,0 +1,132 @@
+.container {
+    width: 60%;
+    margin: 0 auto;
+    @media(max-width:900px){
+
+        width: 90%;
+        }
+    .content {
+        display: grid;
+        grid-template-columns: 80% 20%;
+        gap: 4rem;
+        padding-top: 2rem;
+        @media(max-width:1200px){
+            grid-template-columns: 1fr;
+            }
+        .left {
+            h2 {
+                font-weight: 400;
+                padding: 1rem 0;
+            }
+            p {
+                padding-bottom: 1rem;
+                font-size: .9rem;
+            }
+            a.redlink {
+                display: block;
+                padding-bottom: 2rem;
+                border-bottom: 1px dashed #aaaaaa90;
+            }
+            span {
+                font-size: .8rem;
+            }
+            form {
+                width: 60%;
+
+                label {
+                    font-weight: 400;
+                    font-size: .8rem;
+                    padding: 1rem 0 .5rem 0;
+                }
+                label.price {
+                    display: block;
+                }
+                textarea {
+                    resize: none;
+                }
+                input, textarea, select, option {
+                    border-radius: 4px;
+                    padding: .5rem .75rem;
+                    border: 1px solid #d6d4d4;
+                    outline: 0;
+                    
+                }
+
+                button {
+                    font-size: 1rem;
+                    margin-left: auto;
+                    margin-top: 1.5rem;
+                    border: none;
+                    border-radius: 4px;
+                    padding: 0.5em;
+                    color: #fff;
+                    background: linear-gradient(0deg, rgba(255,0,0,1) 0%, rgba(236,0,0,1) 100%);
+                }
+
+                .type {
+                    display: grid;
+                    grid-template-columns: 60% 38%;
+                    gap: 2%;
+                }
+                .half {
+                    display: grid;
+                    grid-template-columns: repeat(2, 1fr);
+                    gap: 2%;
+                }
+                .check {
+
+                    &box {
+                        cursor: pointer;
+                        width: 20px;
+                        height: 20px;
+                        margin-right: .5rem;
+
+                    }
+                    &label {
+                        padding: 0 !important;
+                    }
+                }
+                
+                
+                
+            }
+        }
+        .right {
+            padding-left: 2rem;
+            border-left: 1px solid #aaaaaa80;
+            @media(max-width:1200px){
+                padding-left: unset;
+                border-left: unset;
+                padding-top: 2rem;
+                }
+            .rules {
+                display: flex;
+                flex-direction: column;
+                padding-top: 1rem;
+                gap: 1rem;
+                font-size: .8rem;
+                h3 {
+                    font-size: .9rem;
+                }
+                li {
+                    display: flex;
+                    flex-direction: row;
+                    svg {
+                        color: #39b54a;
+                        align-self: center;
+                    }
+                    p {
+                        margin-left: 1rem;
+                    }
+
+                }
+            }
+        }
+    }
+}
+.redlink {
+    color: #ff0000 !important;
+}
+.red {
+    color: #ff0000;
+}

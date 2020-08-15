@@ -1,0 +1,43 @@
+<section class="container">
+
+    <section class="content">
+        <section class="left">
+            <span><a routerLink="/forside">Hotel Overlook</a> > Min side</span>
+            <h2>Adminstrer reservationer</h2>
+            <p class="underline">Her kan du ændre og afbestille dine reservationer.</p>
+            <section class="reservations">
+                <article *ngFor="let item of reservations">
+                    <ul>
+                        <li><span>Hotel og værelsestype</span></li>
+                        <li><p>{{item.hotel_title}}</p></li>
+                        <li><p>{{item.room_title}}</p></li>
+                    </ul>
+                    <ul>
+                        <li><span>Dato</span></li>
+                        <li><p>{{item.checkin_date}}</p></li>
+                        <li><p>{{item.checkout_date}}</p></li>
+                    </ul>
+                    <ul>
+                        <li><span>Antal personer</span></li>
+                        <li><p>{{item.num_persons}}</p></li>
+                    </ul>
+                    <ul>
+                        <li><span>Handling</span></li>
+                        <li><p class="green">Rediger</p></li>
+                        <li><p (click)="remove(item.id, $event)" class="red">Afbestil</p></li>
+                    </ul>
+                </article>
+            </section>
+        </section>
+        <section class="right">
+            <ul>
+                <li><h3>Dine oplysninger</h3></li>
+                <li><span>Du er logget ind som <b>{{user.username}}</b></span></li>
+                <li><a routerLink="/min-side">Adminstrer reservationer</a></li>
+                <li><a routerLink="/om-overlook">Om Overlook</a></li>
+                <li><a routerLink="/nyheder">Nyheder</a></li>
+                <li><a (click)="logout()">Log ud</a></li>
+            </ul>
+        </section>
+    </section>
+</section>
