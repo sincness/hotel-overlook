@@ -27,6 +27,7 @@ import { NyhedComponent } from './pages/nyhed/nyhed.component';
 import { NyhederComponent } from './pages/nyheder/nyheder.component';
 import { MinSideComponent } from './pages/min-side/min-side.component';
 import { TakComponent } from './pages/tak/tak.component';
+import { HeadingComponent } from './partials/heading/heading.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +49,8 @@ import { TakComponent } from './pages/tak/tak.component';
     NyhedComponent,
     NyhederComponent,
     MinSideComponent,
-    TakComponent
+    TakComponent,
+    HeadingComponent
   ],
   imports: [
     BrowserModule,

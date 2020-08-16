@@ -151,9 +151,7 @@
                         padding: 0.5rem 0.75rem;
                         border: 1px solid #d6d4d4;
                         outline: 0;
-                    @media(max-width:1200px){
                         width: 100%;    
-                    }
 
                     }
                 }
@@ -167,6 +165,7 @@
                     background: linear-gradient(0deg, red 0%, #ec0000 100%);
                     width: 100%;
                     margin-top: .5rem;
+                    box-shadow: 0 2px 0 #810a0a;
                 @media(max-width:1200px){
                     margin-top: 1rem;
                 }
