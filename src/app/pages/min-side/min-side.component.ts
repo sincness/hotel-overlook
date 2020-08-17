@@ -15,7 +15,14 @@ export class MinSideComponent implements OnInit {
 
   ngOnInit(): void {
     this.getReservations();
-    
+
+  }
+
+  fixDate(date) {
+    date = new Date(date).toLocaleDateString('da-DK', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+    // date.splice(1, 0, '<br/>')
+    // let sentence = date.join(' ')
+    return date;
   }
 
   async getReservations() {
@@ -27,15 +34,15 @@ export class MinSideComponent implements OnInit {
 
     // if (this.reservations.status) this.reservations = this.reservations.items;
     // console.log(this.reservations);
-    
+
   }
 
 
   async remove(id, elm) {
-    elm.target.parentNode.parentNode.parentNode.remove();    
+    elm.target.parentNode.parentNode.parentNode.remove();
     let x = this.http.deleteReservation(id).toPromise();
     if (x) {
-      document.body.insertAdjacentHTML('afterbegin', 
+      document.body.insertAdjacentHTML('afterbegin',
           `<section class="confirm">
             <p>Turen er blevet afbestilt og fjernet fra oversigten.</p>
           </section>`
@@ -48,7 +55,7 @@ export class MinSideComponent implements OnInit {
   }
 
 
-  logout() {    
+  logout() {
     this.auth.logout();
     setTimeout(() => {
       location.reload();

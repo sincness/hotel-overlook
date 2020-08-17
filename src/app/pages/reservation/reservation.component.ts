@@ -37,6 +37,8 @@ export class ReservationComponent implements OnInit {
       room: [this.room, Validators.required],
       is_flex: [Boolean, Validators.required],
       num_persons: [null, Validators.required],
+      checkin: ['', Validators.required],
+      checkout: ['', Validators.required],
       firstname: ['', Validators.required],
       lastname: ['', Validators.required],
       phone: ['', Validators.required],
@@ -48,18 +50,19 @@ export class ReservationComponent implements OnInit {
   get f() { return this.order.controls; }
 
   buy() {
-    console.log(this.order);
 
     if (this.order.valid) {
-      let email = (this.auth.currentUserValue.email) ? this.auth.currentUserValue.email : 'test@test.dk';
+      let checkin = Math.round(new Date(this.order.get('checkin').value).getTime()/1000),
+       checkout = Math.round(new Date(this.order.get('checkout').value).getTime()/1000),
+       email = (this.auth.currentUserValue.email) ? this.auth.currentUserValue.email : 'test@test.dk';
       const data = new FormData;
       data.append('user_id', this.auth.currentUserValue.user_id);
       data.append('hotel_id', this.order.get('hotel').value);
       data.append('room_id', this.order.get('room').value);
       data.append('is_flex', this.order.get('is_flex').value);
       data.append('num_persons', this.order.get('num_persons').value);
-      data.append('checkin', '123123123123');
-      data.append('checkout', '123123123123');
+      data.append('checkin', checkin.toString());
+      data.append('checkout', checkout.toString());
       data.append('firstname', this.order.get('firstname').value);
       data.append('lastname', this.order.get('lastname').value);
       data.append('email', email);
