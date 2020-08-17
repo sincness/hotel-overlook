@@ -9,9 +9,9 @@
     <section class="countries">
         <a *ngFor="let country of countries" [class.active]="this.sortBy === lowerCase(country.name)" (click)="filterBy(country.name, country.id); reload()">{{country.name}}</a>
     </section>
-    
+
     <section class="content">
-    
+
         <section class="left">
             <span *ngIf="rooms" class="padding"><a routerLink="/forside">Hotel Overlook</a> > <a routerLink="/hoteller">Hoteller og Destinationer</a> > <a routerLink="/hoteller/{{country}}"> {{ upperCase(country) }} </a> > <a routerLink="/hoteller/{{country}}/{{city}}">{{ upperCase(city) }}</a>  > <a *ngIf="rooms" routerLink="/hoteller/{{country}}/{{city}}/{{hotelId}}"> {{ rooms[0].hotel_name }} </a> > {{room.title}}</span>
             <h2 *ngIf="rooms" class="padding">{{ rooms[0].hotel_name }}</h2>
@@ -19,7 +19,7 @@
             <!-- <p class="air" *ngFor="let country of countries | slice:0:1;">{{country.description}}</p> -->
             <h3 class="overline">Vores værelser</h3>
             <section class="cities">
-                
+
                 <article *ngIf="room">
                     <figure>
                         <img [src]="room.images[0].image" alt="{{room.room_title}}">
@@ -35,7 +35,7 @@
                           </figure>
                       </section>
                   </section>
-                  
+
 
                   <p>{{ room.description }}</p>
                 <section class="book">
@@ -45,7 +45,7 @@
                         <span class="note">Kan ikke ændres eller afbestilles</span>
                         <section class="prices">
                           <span class="price">{{ priceFix(room.day_price_normal) }}<p>DKK/nat</p></span>
-                          <button routerLink="/reservation" type="button">Book</button>
+                          <button routerLink="/reservation/{{hotelId}}/{{roomId}}/0" type="button">Book</button>
                         </section>
                     </section>
                     <section class="flex">
@@ -53,14 +53,14 @@
                         <span class="note">Kan ændres eller afbestilles</span>
                         <section class="prices">
                           <span class="price">{{ priceFix(room.day_price_flex) }} <p>DKK/nat</p></span>
-                          <button routerLink="/reservation" type="button">Book</button>
+                          <button routerLink="/reservation/{{hotelId}}/{{roomId}}/1" type="button">Book</button>
                         </section>
                     </section>
                 </section>
 
                 </article>
             </section>
-    
+
         </section>
         <section class="right">
             <ul>
@@ -74,9 +74,9 @@
                 <li *ngIf="!like"><input (click)="postRating()" id="toggle-heart" type="checkbox"/>
                     <label for="toggle-heart">❤</label></li>
             </ul>
-            
-            
+
+
         </section>
-    
+
     </section>
 </section>

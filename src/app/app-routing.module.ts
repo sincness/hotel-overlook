@@ -29,6 +29,7 @@ const routes: Routes = [
   { path: 'rooms', component: RoomsComponent },
   { path: 'rooms/:id', component: RoomComponent },
   { path: 'reservation', component: ReservationComponent, canActivate: [AuthGuard] },
+  { path: 'reservation/:country/:room/:flex', component: ReservationComponent, canActivate: [AuthGuard] },
   { path: 'reservation/tak', component: TakComponent, canActivate: [BuyGuard] },
   { path: 'login', component: LoginComponent },
   { path: 'min-side', component: MinSideComponent, canActivate: [AuthGuard] },

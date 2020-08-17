@@ -8,7 +8,9 @@ h1 {
     background-color: rgba(0, 0, 0, .8);
     padding: .8rem 4rem .8rem .8rem;
     border-radius: 0 0 10em 0;
-
+    @media (max-width: 1375px) {
+      display: none;
+    }
     &::before {
         content: '';
         position: absolute;
@@ -24,3 +26,5 @@ h1 {
 h1.hidden {
     display: none;
 }
+
+

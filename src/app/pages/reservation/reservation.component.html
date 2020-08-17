@@ -1,7 +1,7 @@
 <section class="container">
 
     <section class="content">
-    
+
         <section class="left">
             <span class="padding"><a routerLink="/forside">Hotel Overlook</a> > <a href="#">Reservation</a> > Reserver dit foretrukne værelse </span>
             <h2>Reserver dit foretrukne værelse</h2>
@@ -10,8 +10,9 @@
 
             <form [formGroup]="order" method="POST">
                 <section class="input">
-                    <label for="destination">Destination/Hotel: <span *ngIf="f.hotel.invalid" class="red">*</span></label>
-                    <select formControlName="hotel" name="destination" for>
+                    <label for="hotel">Destination/Hotel: <span *ngIf="f.hotel.invalid" class="red">*</span></label>
+                    <select formControlName="hotel" name="hotel" for>
+                        <option [ngValue]="null" hidden >Vælg en destination</option>
                         <option value="1">Göteborg, Overlook Europa</option>
                         <option value="3">Göteborg, Overlook Crown</option>
                         <option value="4">Stockholm, Overlook Grand Central</option>
@@ -47,6 +48,7 @@
                     <section class="input-container">
                         <label for="room">Værelsestype: <span *ngIf="f.room.invalid" class="red">*</span></label>
                         <select formControlName="room" name="room">
+                            <option [ngValue]="null" selected hidden>Vælg et værelse</option>
                             <option value="1">Economy</option>
                             <option value="2">Superior</option>
                             <option value="3">Superior Plus</option>
@@ -59,6 +61,7 @@
                     <section class="input-container">
                         <label for="persons">Antal personer: <span *ngIf="f.num_persons.invalid" class="red">*</span></label>
                         <select formControlName="num_persons" name="persons">
+                            <option [ngValue]="null" selected hidden>Vælg et antal personer</option>
                             <option value="1">1</option>
                             <option value="2">2</option>
                             <option value="3">3</option>
@@ -82,11 +85,11 @@
                 </section>
                 <label class="price">Pris klasse: </label>
                 <section class="input-radio">
-                    <input formControlName="is_flex" type="radio" id="normal" name="is_flex" value="false" checked>
+                    <input formControlName="is_flex" type="radio" id="normal" name="is_flex" value="false">
                     <label class="radio space" for="normal">Normal Pris</label>
 
                     <input formControlName="is_flex" type="radio" id="flex" name="is_flex" value="true">
-                    <label class="radio" for="flex">Flex Pris</label>
+                    <label class="radio" for="is_flex">Flex Pris</label>
                 </section>
                 <section class="half">
                     <section class="input-container">
@@ -112,9 +115,9 @@
                 </section>
                 <button type="button" (click)="buy()">Send reservation</button>
                 <!-- <button [disabled]="!order.valid" type="button" (click)="buy()">Send reservation</button> -->
-                
+
             </form>
-    
+
         </section>
         <section class="right">
             <ul class="rules">
@@ -127,6 +130,6 @@
                 <li><i class="fas fa-check"></i><p>Morgenmad er inkluderet.</p></li>
             </ul>
         </section>
-    
+
     </section>
 </section>

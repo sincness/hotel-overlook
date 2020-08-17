@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/services/auth.service';
 import { HttpService } from 'src/app/services/http.service';
 import { CookieService } from 'src/app/services/cookie.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-reservation',
@@ -11,15 +12,33 @@ import { CookieService } from 'src/app/services/cookie.service';
 })
 export class ReservationComponent implements OnInit {
   order: FormGroup;
+  // hotel = (this.route.snapshot.url[1].path) ? this.route.snapshot.url[1].path : null;
+  // room = (this.route.snapshot.url[2].path) ? this.route.snapshot.url[2].path : null;
+  // flex = (this.route.snapshot.url[3].path) ? this.route.snapshot.url[3].path : null;
 
-  constructor(private fb: FormBuilder, private auth: AuthService, private http: HttpService, private cookie: CookieService) { }
+  hotel = (this.route.snapshot.params.hotel) ? this.route.snapshot.params.hotel : null;
+  room = (this.route.snapshot.params.room) ? this.route.snapshot.params.room : null;
+  flex = (this.route.snapshot.params.flex) ? this.route.snapshot.params.flex : null;
+
+  constructor(private fb: FormBuilder, private auth: AuthService, private http: HttpService, private cookie: CookieService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
+
+    setTimeout(_ => {
+      const x: any = document.querySelectorAll('input[type=radio]');
+      console.log(x);
+
+      if (this.flex === null) x[0].checked = true;
+      if (this.flex === '0') x[0].checked = true;
+      if (this.flex === '1') x[1].checked = true;
+
+    }, 200);
+
     this.order = this.fb.group({
-      hotel: ['', Validators.required],
-      room: ['', Validators.required],
-      is_flex: [Boolean, Validators.required],
-      num_persons: ['', Validators.required],
+      hotel: [this.hotel, Validators.required],
+      room: [this.room, Validators.required],
+      is_flex: [this.flex, Validators.required],
+      num_persons: [null, Validators.required],
       firstname: ['', Validators.required],
       lastname: ['', Validators.required],
       phone: ['', Validators.required],
@@ -46,7 +65,7 @@ export class ReservationComponent implements OnInit {
       data.append('email', email);
       data.append('phone', this.order.get('phone').value);
       console.log(this.order.value);
-      
+
       this.http.postReservation(data).subscribe((res: any) => {
         if (res.status) {
           this.cookie.setPurchase();
@@ -55,7 +74,7 @@ export class ReservationComponent implements OnInit {
 
       });
     }
-    
+
 
   }
 }
