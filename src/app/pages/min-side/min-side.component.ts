@@ -19,21 +19,14 @@ export class MinSideComponent implements OnInit {
   }
 
   fixDate(date) {
-    date = new Date(date).toLocaleDateString('da-DK', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
-    // date.splice(1, 0, '<br/>')
-    // let sentence = date.join(' ')
-    return date;
+    return new Date(date).toLocaleDateString('da-DK', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
   }
 
   async getReservations() {
-    // this.reservations = await this.http.getReservation(parseInt(this.auth.currentUserValue.user_id)).toPromise();
     this.http.getReservation(parseInt(this.auth.currentUserValue.user_id)).subscribe((res: any) => {
       console.log(res);
       this.reservations = res.items;
     });
-
-    // if (this.reservations.status) this.reservations = this.reservations.items;
-    // console.log(this.reservations);
 
   }
 
