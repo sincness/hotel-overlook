@@ -26,8 +26,6 @@ export class ReservationComponent implements OnInit {
 
     setTimeout(_ => {
       const x: any = document.querySelectorAll('input[type=radio]');
-      console.log(x);
-
       if (this.flex === null) x[0].checked = true;
       if (this.flex === '0') x[0].checked = true;
       if (this.flex === '1') x[1].checked = true;
@@ -37,7 +35,7 @@ export class ReservationComponent implements OnInit {
     this.order = this.fb.group({
       hotel: [this.hotel, Validators.required],
       room: [this.room, Validators.required],
-      is_flex: [this.flex, Validators.required],
+      is_flex: [Boolean, Validators.required],
       num_persons: [null, Validators.required],
       firstname: ['', Validators.required],
       lastname: ['', Validators.required],
@@ -50,6 +48,8 @@ export class ReservationComponent implements OnInit {
   get f() { return this.order.controls; }
 
   buy() {
+    console.log(this.order);
+
     if (this.order.valid) {
       let email = (this.auth.currentUserValue.email) ? this.auth.currentUserValue.email : 'test@test.dk';
       const data = new FormData;
@@ -64,7 +64,6 @@ export class ReservationComponent implements OnInit {
       data.append('lastname', this.order.get('lastname').value);
       data.append('email', email);
       data.append('phone', this.order.get('phone').value);
-      console.log(this.order.value);
 
       this.http.postReservation(data).subscribe((res: any) => {
         if (res.status) {

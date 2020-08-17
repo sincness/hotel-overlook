@@ -113,8 +113,8 @@
                     <input formControlName="check" class="checkbox" type="checkbox" name="accept" value="Accept">
                     <label class="checklabel" for="accept"> Jeg accepterer hermed Overlooks betingelser. <span *ngIf="f.check.invalid" class="red">*</span></label>
                 </section>
-                <button type="button" (click)="buy()">Send reservation</button>
-                <!-- <button [disabled]="!order.valid" type="button" (click)="buy()">Send reservation</button> -->
+                <!-- <button type="button" (click)="buy()">Send reservation</button> -->
+                <button [disabled]="!order.valid" type="button" (click)="buy()">Send reservation</button>
 
             </form>
 

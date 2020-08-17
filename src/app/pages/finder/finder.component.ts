@@ -20,7 +20,7 @@ export class FinderComponent implements OnInit {
   async ngOnInit() {
     setTimeout(_ => {
       this.hits = document.querySelectorAll('.shown').length;
-    }, 100);
+    }, 200);
 
     switch (this.country) {
       case 'danmark':
@@ -30,8 +30,8 @@ export class FinderComponent implements OnInit {
         this.getHotel(13);
         this.getHotel(14);
         this.getHotel(15);
-        this.getHotel(16);    
-        
+        this.getHotel(16);
+
         break;
       case 'sverige':
         this.getHotel(1);
@@ -39,7 +39,7 @@ export class FinderComponent implements OnInit {
         this.getHotel(4);
         this.getHotel(5);
         this.getHotel(6);
-        
+
 
 
         break;
@@ -56,7 +56,7 @@ export class FinderComponent implements OnInit {
         this.getHotel(20);
         this.getHotel(21);
         this.getHotel(22);
-        
+
         break;
       case 'tyskland':
         this.getHotel(23);
@@ -64,7 +64,7 @@ export class FinderComponent implements OnInit {
         this.getHotel(25);
         this.getHotel(26);
 
-        
+
         break;
       case 'polen':
         this.getHotel(27);
@@ -77,7 +77,7 @@ export class FinderComponent implements OnInit {
 
         break;
     }
-    
+
   }
 
   submit() {
@@ -102,11 +102,11 @@ export class FinderComponent implements OnInit {
   async getHotel(id: number) {
     let data: any = await this.http.getHotel(id).toPromise();
     let items = (data.items) ? data.items : data.item;
-    
+
     this.second.push(...items.rooms.items);
     this.search.push(items);
-    
-    
+
+
   }
 
   getCity(hotelId) {
@@ -167,6 +167,6 @@ export class FinderComponent implements OnInit {
   upperCase(string: string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
   }
-  
+
 
 }

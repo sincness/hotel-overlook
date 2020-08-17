@@ -11,13 +11,13 @@ export class SliderComponent implements OnInit {
   images = [];
   current: number = 0;
   width = window.innerWidth;
-  
+
   constructor(private router: Router) { }
 
   ngOnInit(): void {
     const path = '../../../assets/img/';
     this.router.events.subscribe(e => {
-      if (e instanceof NavigationEnd) {      
+      if (e instanceof NavigationEnd) {
        switch(this.router.url) {
          case '/forside':
            this.images = [path + 'frankfurt-skyline-germany.jpg', path + 'gdansk-center-church-poland.jpg', path + 'harbour-gothenburg.jpg']
@@ -95,14 +95,15 @@ export class SliderComponent implements OnInit {
          break;
          case '/login':
          case '/reservation':
+         case '/reservation/tak':
            this.images = [path + 'overlook-victoria.jpg']
          break;
- 
+
          default:
            this.images = [];
          break;
        }
- 
+
       }
     })
   }
@@ -117,7 +118,7 @@ export class SliderComponent implements OnInit {
     this.current = (this.current + 1) % this.images.length;
     slides.forEach(slide => slide.style.transform = `translateX(-${this.width * this.current}px)`)
   }
-  
+
   @HostListener('window:resize', ['$event'])
   onResize(event) {
     this.width = window.innerWidth;

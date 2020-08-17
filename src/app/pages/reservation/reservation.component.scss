@@ -47,7 +47,7 @@
                     padding: .5rem .75rem;
                     border: 1px solid #d6d4d4;
                     outline: 0;
-                    
+
                 }
 
                 button {
@@ -60,6 +60,9 @@
                     color: #fff;
                     box-shadow: 0 2px 0 #810a0a;
                     background: linear-gradient(0deg, rgba(255,0,0,1) 0%, rgba(236,0,0,1) 100%);
+                    &:disabled {
+                      opacity: .35;
+                    }
                 }
 
                 .input {
@@ -123,9 +126,9 @@
                         padding: 0 !important;
                     }
                 }
-                
-                
-                
+
+
+
             }
         }
         .right {
