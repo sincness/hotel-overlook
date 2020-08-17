@@ -36,7 +36,7 @@ export class BookComponent implements OnInit {
   like = this.cookie.get('like');
 
   constructor(private http: HttpService, private route: ActivatedRoute, private router: Router, private location: Location, private cookie: CookieService) {
-  
+
    }
 
 
@@ -63,7 +63,7 @@ export class BookComponent implements OnInit {
       case 'tyskland':
         this.id = 5;
         this.sortBy = 'tyskland';
-        
+
 
         break;
       case 'polen':
@@ -80,19 +80,19 @@ export class BookComponent implements OnInit {
     switch (this.city) {
       case 'københavn':
         this.cityId = 8;
-        
+
         break;
       case 'aalborg':
         this.cityId = 11;
-          
+
         break;
       case 'silkeborg':
         this.cityId = 13;
-        
+
         break;
       case 'aarhus':
         this.cityId = 14;
-        
+
         break;
       case 'göteborg':
         this.cityId = 1;
@@ -151,13 +151,13 @@ export class BookComponent implements OnInit {
     }
     // switch (this.roomId) {
     //   case 1:
-        
+
     //     break;
-    
+
     //   default:
     //     break;
     // }
-    
+
     // this.urlParam();
     this.getCities(this.id);
     this.getHotels(this.cityId);
@@ -169,7 +169,7 @@ export class BookComponent implements OnInit {
     // this.getCities(1);
     const data: any = await this.http.getCountries().toPromise();
     this.countries = data.items;
-    
+
     // (this.countries.items === undefined) ? this.countries.item : this.countries.items;
   }
 
@@ -182,7 +182,6 @@ export class BookComponent implements OnInit {
   async getCities(id: number) {
     const data: any = await this.http.getCities(id).toPromise();
     this.cities = data.items;
-    // console.log(this.cities);
   }
   async getHotels(id: number) {
     const data: any = await this.http.getHotels(id).toPromise();
@@ -192,27 +191,25 @@ export class BookComponent implements OnInit {
     const data: any = await this.http.getHotel(id).toPromise();
     this.hotel = data.item;
     this.facilities = this.hotel.facilities;
-    
+
   }
-  
+
   async getRooms(id: number) {
     const data: any = await this.http.getRooms(id).toPromise();
     this.rooms = data.items;
-    console.log(this.rooms);
-    
+
   }
-  
+
   async getRoom(id: number) {
     const data: any = await this.http.getRoom(id).toPromise();
     this.room = data.item;
-    // console.log(this.room);
-    
+
   }
 
   getIdx() {
     return this.id - 1;
   }
-  
+
   priceFix(price) {
     return Math.trunc(price);
   }
